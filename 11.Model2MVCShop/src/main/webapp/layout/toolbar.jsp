@@ -71,7 +71,7 @@
 	                         <span class="caret"></span>
 	                     </a>
 	                     <ul class="dropdown-menu">
-	                         <li><a href="#">상 품 검 색</a></li>
+	                         <li><a class ="search" href="#">상 품 검 색</a></li>
 	                         
 	                         <c:if test="${sessionScope.user.role == 'user'}">
 	                           <li><a href="#">구매이력조회</a></li>
@@ -123,5 +123,44 @@
 	 		//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 			$(self.location).attr("href","/user/getUser?userId=${sessionScope.user.userId}");
 		});
+
+		
+		 $(function() {
+				//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+			 	$("a:contains('판매상품등록')").on("click" , function() {
+					$(self.location).attr("href","/user/logout");
+					//self.location = "/user/logout"
+				}); 
+			 });	
+		
+		
+			//============= 상품 Event  처리 =============	
+		 $(function() {
+			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+		 	$("a:contains('판매상품등록')").on("click" , function() {
+				//$(self.location).attr("href","/user/logout");
+				$(self.location).attr("href","/product/addProduct") ;
+			}); 
+		 });
+			
+		 $(function() {
+				//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+			 	$("a:contains('판매상품관리')").on("click" , function() {
+					//$(self.location).attr("href","/user/logout");
+					$(self.location).attr("href","/product/listProduct?menu=manage") ;
+				}); 
+			 });
+						
+	 
+	
+		 $(function() {
+				//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+			 	$(".search").on("click" , function() {
+					//$(self.location).attr("href","/user/logout");
+					$(self.location).attr("href","/product/listProduct?menu=search") ;
+				}); 
+			 });						
+	
+
 		
 	</script>  
