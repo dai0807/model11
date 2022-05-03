@@ -58,7 +58,7 @@
 	
 	<!-- 파일 경로  -->
 	<bean id="uploadPath" class="java.lang.String">
-    <constructor-arg value="C:\\Users\\bitcamp\\git\\modle10\\10.Model2MVCShop(Ajax)\\src\\main\\webapp\\images\\uploadFiles"/>
+    <constructor-arg value="C:\\Users\\bitcamp\\git\\model11\\11.Model2MVCShop\\src\\main\\webapp\\images\\uploadFiles"/>
   </bean>
   
 	

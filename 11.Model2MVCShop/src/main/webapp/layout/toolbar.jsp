@@ -58,6 +58,8 @@
 		                     <ul class="dropdown-menu">
 		                         <li><a href="#">판매상품등록</a></li>
 		                         <li><a href="#">판매상품관리</a></li>
+		                         <li><a href="#">판매상품목록</a></li>
+		                         
 		                         <li class="divider"></li>
 		                         <li><a href="#">etc..</a></li>
 		                     </ul>
@@ -151,7 +153,14 @@
 				}); 
 			 });
 						
-	 
+			
+		 $(function() {
+ 			 	$("a:contains('판매상품목록')").on("click" , function() {
+					//$(self.location).attr("href","/user/logout");
+					$(self.location).attr("href","/purchase/listSale") ;
+				}); 
+			 });
+						 
 	
 		 $(function() {
 				//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
