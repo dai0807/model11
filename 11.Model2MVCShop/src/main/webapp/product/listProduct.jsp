@@ -255,9 +255,9 @@
 	 <c:forEach var="product" items="${list}">
  
 
- 	<div class="col-xs-10 col-sm-3 col-md-3 ">
+ 	<div class="col-xs-3 col-sm-3 col-md-3 ">
       <div class="thumbnail">
-       <img src="/images/uploadFiles/${product.fileName }" >
+       <img src="/images/uploadFiles/${product.fileName }" alt="" width="242" heigth="200">
           <div class="caption">
             <h3>${ product.prodName } </h3>
             <p>${product.price}</p>
