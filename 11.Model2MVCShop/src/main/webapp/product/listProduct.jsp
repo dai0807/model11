@@ -3,7 +3,22 @@
     pageEncoding="EUC-KR"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
+   <!--
+   최신 상품 쿼리 
    
+     select inner.*   from (
+	select prod_no , prod_name ,price , REG_DATE 
+	From product  order by  REG_DATE desc) inner WHERE ROWNUM<= 4 ; 
+
+인기 상품 쿼리 
+
+select p.prod_no  ,p.price  , p.prod_name from
+ (select  * from 
+    (select prod_no ,count(*) as count from transaction
+           group by prod_no  order by count desc )  where ROWNUM <= 4  ) inner , product p  
+where inner.prod_no = p.prod_no ;
+
+    -->
     
     
 <!DOCTYPE html>
@@ -240,6 +255,7 @@
 </table>
 
 
+
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 	<tr>
 			<td colspan="11" >
@@ -255,9 +271,9 @@
 	 <c:forEach var="product" items="${list}">
  
 
- 	<div class="col-xs-3 col-sm-3 col-md-3 ">
-      <div class="thumbnail">
-       <img src="/images/uploadFiles/${product.fileName }" alt="" width="242" heigth="200">
+ 	<div class="col-sm-3 col-md-3 " >
+      <div class="thumbnail"  style="height: 400px;"   >
+       <img class="img-responsive" src="/images/uploadFiles/${product.fileName }" alt="" width="200" height="200" > 
           <div class="caption">
             <h3>${ product.prodName } </h3>
             <p>${product.price}</p>
