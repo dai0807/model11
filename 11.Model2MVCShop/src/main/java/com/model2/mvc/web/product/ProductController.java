@@ -2,6 +2,7 @@ package com.model2.mvc.web.product;
 
 import java.io.File;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -68,7 +70,7 @@ public class ProductController {
 	
 	//@RequestMapping("/addProductView.do")
 	@RequestMapping( value="addProduct" , method=RequestMethod.GET )
-	public String addProductView() throws Exception {
+	public String addProduct() throws Exception {
 
 		System.out.println("/addProductView  로 보내기 ");
 		
@@ -86,20 +88,22 @@ public class ProductController {
 		System.out.println("add Product View + product ::  제조일자 변경 후 " + product1 );
 
 		 String fileName = file.getOriginalFilename();
-		  System.out.println("파일이름" + file.getOriginalFilename());
 		 
-		
-		
-		  if(!file.getOriginalFilename().isEmpty()) {
-				file.transferTo(new File(uploadPath, file.getOriginalFilename()));
-				model.addAttribute("msg", "File uploaded successfully.");
-				System.out.println("성공 ");
-			}else {
-				model.addAttribute("msg", "Please select a valid mediaFile..");
-				System.out.println("실패  ");
-
-				
-			}
+		 fileName =  uploadFile(fileName, file.getBytes());   // 파일 이름 중복 제거 
+ 		  System.out.println("파일이름" +  fileName );
+	 
+//		
+//		이것만 기억 
+//		  if(!file.getOriginalFilename().isEmpty()) {
+//				file.transferTo(new File(uploadPath, file.getOriginalFilename()));
+//				model.addAttribute("msg", "File uploaded successfully.");
+//				System.out.println("성공 ");
+//			}else {
+//				model.addAttribute("msg", "Please select a valid mediaFile..");
+//				System.out.println("실패  ");
+//
+//				
+//			}
 			
 		product1.setFileName(fileName);
 		
@@ -108,16 +112,51 @@ public class ProductController {
 		
 		
 		
-		
 		productService.addProduct(product1) ;
 		//Business Logic
- 		
+		System.out.println("제품 추가 !! ");
+		System.out.println(product1);
   
  		model.addAttribute("product1", product1);
 
-		return "forward:/product/addgetProduct.jsp";
+ 		System.out.println("가라! ");
+ 		 return "forward:/product/addgetProduct.jsp";
 	}	
 
+    //파일명 랜덤 생성 메서드
+    private String uploadFile(String originalName, byte[] fileData) throws Exception{
+    
+        // uuid 생성 
+        UUID uuid = UUID.randomUUID();
+        
+        //savedName 변수에 uuid + 원래 이름 추가
+        String savedName = uuid.toString()+"_"+originalName;
+        //uploadPath경로의 savedName 파일에 대한 file 객체 생성
+        File target = new File(uploadPath, savedName);
+        //fileData의 내용을 target에 복사함
+        FileCopyUtils.copy(fileData, target);
+ 
+         
+        
+        
+        
+        return savedName;
+    }
+	
+    
+	@RequestMapping( value="addProductVieww" , method=RequestMethod.GET )
+	public String addProductView() throws Exception {
+
+		System.out.println("/addProductView  로 보내기 ");
+		
+		return "redirect:/product/addProductView.jsp";
+	}
+	
+	
+	
+    
+    
+	
 		@RequestMapping(value = "listProduct"   )
 		public String listProduct( @ModelAttribute("search") Search search , Model model ,@RequestParam("menu") String menu  ,HttpServletRequest request) throws Exception{
 			System.out.println("/listProduct ::  GET / POST\"");
@@ -142,10 +181,30 @@ public class ProductController {
 			model.addAttribute("search", search);
 			model.addAttribute("menu", menu);  // 메뉴로 searh 와 manage 나누기 
 
+					if(menu.equals("search")) {
+						
+						if( request.getSession(true).getAttribute("user") != null ) {
+							String userId =((User)request.getSession(true).getAttribute("user")).getUserId(); //유저 아이디 뽑기 
+							model.addAttribute("userId" , userId ) ;
+
+						}else {
+						 	model.addAttribute("userId" ,"") ;
+
+						}
+						
+						
+						
+					return "forward:/product/listProduct.jsp";
+					}else {
+						return "forward:/product/listMangeProduct.jsp";
+					
+					}
 			
-			return "forward:/product/listProduct.jsp";
-		}
-	
+			}
+
+		
+
+		
 //	
 //	@RequestMapping("/listProduct.do")
 //	public String listUser( @ModelAttribute("search") Search search , Model model ,@RequestParam("menu") String menu  ,HttpServletRequest request) throws Exception{
@@ -223,6 +282,9 @@ public String updateProductView(@RequestParam("prodNo" ) int prodNo , Model mode
 		
 	
 	}
+		 
+		 
+		 
 		
 		@RequestMapping(value = "updateProduct" ,  method=RequestMethod.POST  )
 	public String updateProduct( @ModelAttribute("product ") Product  product , Model model ) throws Exception 
@@ -235,6 +297,10 @@ public String updateProductView(@RequestParam("prodNo" ) int prodNo , Model mode
 		  product  = productService.getProduct(product.getProdNo()) ;
 
 		
+		  
+		  
+		  
+		  
 		
 		System.out.println("product ::: 출력하기 " + product );
 	//	model.addAttribute("Product" , product ) ;
@@ -244,6 +310,10 @@ public String updateProductView(@RequestParam("prodNo" ) int prodNo , Model mode
 		
 	
 	}	
+		
+		
+		
+		
 	
 	//	@RequestMapping("/updateProdcutTranCodeByProd.do")  // 데이터 받기 
 	@RequestMapping(value = "updateProdcutTranCodeByProd" ,  method=RequestMethod.GET )  // 데이터 받기 

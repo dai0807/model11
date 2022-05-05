@@ -17,13 +17,18 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
-	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Song+Myung&family=Source+Serif+Pro:wght@600&display=swap" rel="stylesheet">
 	<!--  ///////////////////////// CSS ////////////////////////// -->
 	<style>
     	 body >  div.container{ 
         	border: 3px solid #D6CDB7;
             margin-top: 10px;
         }
+        
+       .text-center{font-family: 'Source Serif Pro', serif;}
+        
     </style>
     
     <!--  ///////////////////////// JavaScript ////////////////////////// -->
@@ -73,7 +78,7 @@
 	<!-- ToolBar Start /////////////////////////////////////-->
 	<div class="navbar  navbar-default">
         <div class="container">
-        	<a class="navbar-brand" href="/index.jsp">Model2 MVC Shop</a>
+        	<a class="navbar-brand" href="/index.jsp">Fait Main</a>
    		</div>
    	</div>
    	<!-- ToolBar End /////////////////////////////////////-->	
@@ -84,7 +89,8 @@
 		<div class="row">
 		
 			<div class="col-md-6">
-					<img src="/images/logo-spring.png" class="img-rounded" width="100%" />
+			 	 	<br/>
+					<img src="/images/faitMain2.PNG" class="img-rounded" width="100%" />
 			</div>
 	   	 	
 	 	 	<div class="col-md-6">

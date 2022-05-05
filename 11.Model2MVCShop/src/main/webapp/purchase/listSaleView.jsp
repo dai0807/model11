@@ -107,6 +107,7 @@ function fncGetList(currentPage){
  	<div class="page-header text-info">
 	       <h3>판매 목록조회</h3>
 	    </div>
+ <form name="detailForm"  >
  
  
  	<!-- table 위로 검색 Start  -->
@@ -194,15 +195,14 @@ function fncGetList(currentPage){
  	</div>
  	<!--  화면구성 div End /////////////////////////////////////-->
  
-<form name="detailForm"  >
  
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 <tr>
 		<td align="center">
 		   <input type="hidden" id="currentPage" name="currentPage" value=""/>
-		   		<jsp:include page="../common/pageNavigator.jsp"/>	
-		 	
+ 					<jsp:include page="../common/pageNavigator_new.jsp"/>
+  					 
     	</td>
 	</tr>
 </table>

@@ -101,24 +101,34 @@ where inner.prod_no = p.prod_no ;
 		//<a href="${ menu == 'search' ? '/product/getProduct' : '/product/updateProductView'}?prodNo=${product.prodNo }&menu=${ menu }&tranCode=${product.proTranCode}">
 		
 		
-		$(".produc_no").on("dblclick" , function(){
+		$("a:contains('보기')").on("click" , function(){
 			
 			
-			var pageNAME = ($("#menu").val() == 'search') ? '/product/getProduct': '/product/updateProductView';
+			var pageNAME =  '/product/getProduct' ;
 			 console.log(  pageNAME );
 
-			var jprodNo = $(this).attr("value1") ;
+			var jprodNo = $(this).attr("value") ;
 			 console.log( "prodNo " +jprodNo );
 
-				var jproTranCode = $(this).attr("value2") ;
-				 console.log( "proTranCode  " +jproTranCode );		      
 			 
-			//  self.location = pageNAME + "?prodNo="+ $(".ct_list_pop  td:nth-child(1)").val() + "&menu="+$("#menu").val() +"&tranCode=" + $(".ct_list_pop  td:nth-child(3)").val() 
-			  
+ 			  
 	        self.location = pageNAME + "?prodNo="+jprodNo+"&menu="+$("#menu").val()   ; 
-//	        self.location = pageNAME + "?prodNo="+jprodNo+"&menu="+$("#menu").val() +"&tranCode=" + jproTranCode  ; 
-			
+ 			
 		});
+		
+		$("a:contains('구매')").on("click" , function(){
+			
+			
+	 
+
+				self.location ="/purchase/addPurchaseView?prodNo="+ $(this).attr("value") ; 
+			 
+ 			  
+	       // self.location = pageNAME + "?prodNo="+jprodNo+"&menu="+$("#menu").val()   ; 
+ 			
+		});		
+		
+		
 		
 		$(".produc_no").on("click" , function(){
 			
@@ -190,94 +200,88 @@ where inner.prod_no = p.prod_no ;
 
 
 </head>
-	<jsp:include page="/layout/toolbar.jsp" />
 
-<div style="width:98%; margin-left:10px;">
+<body>
+	<jsp:include page="/layout/toolbar.jsp" />
+		<jsp:include page="/common/Q&A.jsp" />
+
  <input type="hidden" id="menu"   value="${menu}"/>
 
-<form name="detailForm" >
-<!-- <form name="detailForm" action="/product/listProduct?menu=${menu}" method="post">  -->
+ <!-- <form name="detailForm" action="/product/listProduct?menu=${menu}" method="post">  -->
 <!-- menu를 manage로 보냄  -->
 
  
 
-	<div class="container">
+<div class="container">
 	 	<div class="page-header text-info">
-					  <c:if test="${menu=='search'}">
-						  	     <h3> 상품 검색</h3>
-						  </c:if>
-						<c:if test="${menu=='manage'}">
-							   <h3>  상품 관리 </h3> 
-						  </c:if>	 	
-	      
+ 			 <h3> 상품 검색</h3>
+						 	 
 	    </div>
-	  </div>
+  	 <input type="hidden" id="menu"   value="${menu}"/>
+ 	<form class="form-inline" name="detailForm">
+ 
 
-
-
-<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
-	<tr>
-	<td align="right">
-				<select name="searchCondition"    class="ct_input_g" style="width:80px">
-			 
-				<option value="0" ${ ! empty search.searchCondition && search.searchCondition =="0" ? "selected" : ""} > 상품번호</option>
-				<option value="1" ${ ! empty search.searchCondition && search.searchCondition =="1" ? "selected" : ""} > 상품명</option>
-				<option value="2" ${ ! empty search.searchCondition && search.searchCondition =="2" ? "selected" : ""} > 상품가격</option>
-		 
-			
-			
-			
-				</select>
-		<input type="text" name="searchKeyword" value="${search.searchKeyword}"  class="ct_input_g" style="width:200px; height:19px" />
-				
-				
-				
-	</td>	
-		
-		
-		<td align="right" width="70">
-			<table border="0" cellspacing="0" cellpadding="0">
-				<tr>
-					<td width="17" height="23">
-						<img src="/images/ct_btnbg01.gif" width="17" height="23">
-					</td>
-					<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top:3px;">
-						<!--  <a href="javascript:fncGetList('1');">검색</a>-->
-						검색
-					</td>
-					<td width="14" height="23">
-						<img src="/images/ct_btnbg03.gif" width="14" height="23">
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-</table>
-
-
-
-<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
-	<tr>
-			<td colspan="11" >
 	
-	<%--	<td colspan="11" >전체  <%= total%> 건수, 현재 <%=currentPage %> 페이지</td> --%>
-			전체  ${resultPage.totalCount } 건수, 현재 ${resultPage.currentPage}  페이지
-				 <input type="hidden" id="currentPageH"   value="${resultPage.currentPage}"/>
-		
-	</tr>
+	    <div class="row">
+	       <div class="col-md-6 text-left">
+		    	<p class="text-primary">
+		    		전체  ${resultPage.totalCount } 건수, 현재 ${resultPage.currentPage}  페이지
+					 <input type="hidden" id="currentPageH"   value="${resultPage.currentPage}"/>
+					 <input type="hidden" id="currentPage" name="currentPage" value=""/>
+					 
+		    	</p>
+		    </div>	
+		    <div class="col-md-6 text-right">
+					  <div class="form-group">
+					   
+							<select name="searchCondition"    class="ct_input_g" style="width:80px">
+						 
+							<option value="0" ${ ! empty search.searchCondition && search.searchCondition =="0" ? "selected" : ""} > 상품번호</option>
+							<option value="1" ${ ! empty search.searchCondition && search.searchCondition =="1" ? "selected" : ""} > 상품명</option>
+							<option value="2" ${ ! empty search.searchCondition && search.searchCondition =="2" ? "selected" : ""} > 상품가격</option>
+					 					
+							</select>
+						</div>
+						
+						  <div class="form-group">
+					    <label class="sr-only" for="searchKeyword">검색어</label>
+					    <input type="text" class="form-control" id="searchKeyword" name="searchKeyword"  placeholder="검색어"
+					    			 value="${! empty search.searchKeyword ? search.searchKeyword : '' }"  >
+					  </div>
+	 						
+				 				  <button type="button" class="btn btn-default">검색</button>
+ 			 
+	 
+			</div>	
+	    
+	    
+	    
+	   	 </div>
+   			 <br/>
+			 
 
-<div class="container"> 
+
+	<div> 
 	
 	 <c:forEach var="product" items="${list}">
  
 
  	<div class="col-sm-3 col-md-3 " >
       <div class="thumbnail"  style="height: 400px;"   >
-       <img class="img-responsive" src="/images/uploadFiles/${product.fileName }" alt="" width="200" height="200" > 
+       <img class="img-responsive" src="/images/uploadFiles/${product.fileName }"  onerror="this.onerror=null; this.src='https://via.placeholder.com/240X200?text=No Image';" style= "width:200; height:200px;" > 
+     
+      
+     
           <div class="caption">
-            <h3>${ product.prodName } </h3>
-            <p>${product.price}</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            <h3> ${ product.prodName } </h3>
+            <p>가격  :${product.price}</p>
+            <p>수량  :${product.quantity}</p>
+            
+            <p > <a href="#" class="btn btn-info" role="button" value ="${product.prodNo}"> 보기</a>
+      				<c:if test = "${userId ne 'admin'}">
+         			  <c:if test = "${userId ne ''}">
+            	<a href="#" class="btn btn-primary" role="button" value ="${product.prodNo}"> 구매</a></p>
+        	</c:if> 	</c:if>
         </div>
       </div>
     </div> 
@@ -289,79 +293,34 @@ where inner.prod_no = p.prod_no ;
 
 
 
-
-
-
-
-	
-	
-  
-	
-	
-	 <c:set var="i" value="0" /> <!-- 값 세팅 --> 
-	 <c:forEach var="product" items="${list}">
-			<c:set var="i" value="${ i+1 }" />
-	
-
-	<tr class="ct_list_pop" >
-		<td align="center"   >${i}</td>
-		<td></td>
-		
-		
-				<td align="left"  class = "produc_no" value1="${product.prodNo}"  value2="${product.proTranCode}">
-				
  
-							
-						${ product.prodName }	
-				</td> 
-		
-		<td></td>
-		<td align="left">${product.price}</td>
-		<td></td>
-		<td align="center">${product.regDate}	</td>
-		<td></td>
-		
-					<td align="center">${product.quantity}	</td>
-	
-		<td></td>		
-	</tr>
-	<tr>
-	
-		
-		
- <td id="${product.prodNo}" colspan="11" bgcolor="D6D7D6" height="1"></td>
-		
-		<td colspan="11" bgcolor="D6D7D6" height="1"></td>
-	</tr>
-
-	</c:forEach>		
-	
-	
-</table>
-
-
-
-	
-	
-<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
-<tr>
-		<td align="center">
-		   <input type="hidden" id="currentPage" name="currentPage" value=""/>
+ 		   <input type="hidden" id="currentPage" name="currentPage" value=""/>
 		  
 		   
  
  	<jsp:include page="../common/pageNavigator_new.jsp"/>
  
- 
-<!-- 	<jsp:include page="../common/pageNavigator.jsp"/>	  -->	
-			
-    	</td>
-	</tr>
-</table>
-<!--  페이지 Navigator 끝 -->
-
+ <jsp:include page="/common/Q&A.jsp" />    
 </form>
+ 
+
+
+
+	
+	
+   
+
+ 
+
+
+	
+	
+
 
 </div>
-</body>
+
+		
+ </body>
+
+
 </html>

@@ -47,6 +47,8 @@
 </head>
 
 <body bgcolor="#ffffff" text="#000000">
+	<jsp:include page="/layout/toolbar.jsp" />
+	<jsp:include page="/common/Q&A.jsp" />
 		<!-- 	<c:set var="tran" value="${param.tranNo}" />  --> 
 
 <!-- <form name="updatePurchase" method="post"	action="/purchase/updatePurchase?tranNo=${purchase.tranNo}">  -->

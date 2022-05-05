@@ -58,7 +58,14 @@
 	
 	<!-- 파일 경로  -->
 	<bean id="uploadPath" class="java.lang.String">
-    <constructor-arg value="C:\\Users\\bitcamp\\git\\model11\\11.Model2MVCShop\\src\\main\\webapp\\images\\uploadFiles"/>
+    
+    <constructor-arg value="C:\\Users\\dai64\\git\\model11\\11.Model2MVCShop\\src\\main\\webapp\\images\\uploadFiles"/>
+ <!-- 학원
+ 
+      <constructor-arg value="C:\\Users\\bitcamp\\git\\model11\\11.Model2MVCShop\\src\\main\\webapp\\images\\uploadFiles"/>
+  -->
+ <!-- C:\Users\dai64\git\model11 -->
+ 
   </bean>
   
 	

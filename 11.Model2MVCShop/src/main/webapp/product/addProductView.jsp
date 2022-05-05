@@ -123,7 +123,7 @@
 
 <body bgcolor="#ffffff" text="#000000">
 	<jsp:include page="/layout/toolbar.jsp" />
-
+		<jsp:include page="/common/Q&A.jsp" />
 
 	<div class="container">
 	 	<div class="page-header text-info">

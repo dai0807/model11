@@ -30,7 +30,16 @@
 	
 	<!--  ///////////////////////// CSS ////////////////////////// -->
 	<style></style>
-   	
+   		<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Song+Myung&family=Source+Serif+Pro:wght@600&display=swap" rel="stylesheet">
+	<!--  ///////////////////////// CSS ////////////////////////// -->
+	<style>
+    	 
+        
+       .body{font-family: 'Source Serif Pro', serif;}
+        
+    </style>
    	<!--  ///////////////////////// JavaScript ////////////////////////// -->
 	<script type="text/javascript">
 		
@@ -52,6 +61,12 @@
 		
 		
 		
+		$( function() {
+			//==> 추가된부분 : "addUser"  Event 연결
+			$("a[href='#' ]:contains('검색')").on("click" , function() {
+				self.location = "/product/listProduct?menu=search "
+			});
+		});
 		
 		
 		
@@ -71,7 +86,7 @@
 		
         <div class="container">
         
-        	<a class="navbar-brand" href="#">Model2 MVC Shop</a>
+        	<a class="navbar-brand" href="#">Fait Main </a>
 			
 			<!-- toolBar Button Start //////////////////////// -->
 			<div class="navbar-header">
@@ -86,8 +101,13 @@
 			
 			<div class="collapse navbar-collapse"  id="target">
 	             <ul class="nav navbar-nav navbar-right">
+ 	             
 	                 <li><a href="#">회원가입</a></li>
 	                 <li><a href="#">로 그 인</a></li>
+	                 
+	                 
+	                 
+	                 <!-- product/listProduct?menu=search -->
 	           	</ul>
 	       </div>
    		
@@ -100,17 +120,14 @@
 		
 		<!-- 다단레이아웃  Start /////////////////////////////////////-->
 		<div class="row">
-	
-			<!--  Menu 구성 Start /////////////////////////////////////-->     	
-			<div class="col-md-3">
+	<!--  
+ 			<div class="col-md-3">
 		        
-		       	<!--  회원관리 목록에 제목 -->
-				<div class="panel panel-primary">
+ 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<i class="glyphicon glyphicon-heart"></i> 회원관리
          			</div>
-         			<!--  회원관리 아이템 -->
-					<ul class="list-group">
+ 					<ul class="list-group">
 						 <li class="list-group-item">
 						 	<a href="#">개인정보조회</a> <i class="glyphicon glyphicon-ban-circle"></i>
 						 </li>
@@ -152,16 +169,24 @@
 				</div>
 				
 			</div>
+	 -->		
+		
 			<!--  Menu 구성 end /////////////////////////////////////-->   
 
+
+
+
 	 	 	<!--  Main start /////////////////////////////////////-->   		
-	 	 	<div class="col-md-9">
+	 	 	<div class="col-md-12">
 				<div class="jumbotron">
-			  		<h1>Model2 MVC Shop</h1>
-			  		<p>로그인 후 사용가능...</p>
-			  		<p>로그인 전 검색만 가능합니다.</p>
-			  		<p>회원가입 하세요.</p>
-			  		
+				 <div class="col-md-8">
+			 	 	<br/>
+					<img src="/images/fait_main.jpg" class="img-rounded" width="100%" />
+				</div>
+			  		<h1>Fait Main</h1>
+					 <br><br> <br><br> <br><br> <br><br>
+			  		<p> 로그인 후 사용 가능합니다.</p>
+			  		<br><br> <br><br>
 			  		<div class="text-center">
 			  			<a class="btn btn-info btn-lg" href="#" role="button">회원가입</a>
 			  			<a class="btn btn-info btn-lg" href="#" role="button">로 그 인</a>

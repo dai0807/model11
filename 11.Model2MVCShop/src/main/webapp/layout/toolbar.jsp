@@ -6,11 +6,11 @@
 
 
 <!-- ToolBar Start /////////////////////////////////////-->
-<div class="navbar  navbar-inverse navbar-fixed-top">
+<div class="navbar  navbar-default navbar-fixed-top">
 	
 	<div class="container">
 	       
-		<a class="navbar-brand" href="/index.jsp">Model2 MVC Shop</a>
+		<a class="navbar-brand" href="/index.jsp">Fait main</a>
 		
 		<!-- toolBar Button Start //////////////////////// -->
 		<div class="navbar-header">
@@ -127,13 +127,13 @@
 		});
 
 		
-		 $(function() {
-				//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
-			 	$("a:contains('판매상품등록')").on("click" , function() {
-					$(self.location).attr("href","/user/logout");
+	//	 $(function() {
+	//			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+		//	 	$("a:contains('판매상품등록')").on("click" , function() {
+			//		$(self.location).attr("href","/user/logout");
 					//self.location = "/user/logout"
-				}); 
-			 });	
+	//			}); 
+		//	 });	
 		
 		
 			//============= 상품 Event  처리 =============	
@@ -169,7 +169,17 @@
 					$(self.location).attr("href","/product/listProduct?menu=search") ;
 				}); 
 			 });						
+		 
+			
+		 $(function() {
+				//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+			 	$("a:contains('구매이력조회')").on("click" , function() {
+					//$(self.location).attr("href","/user/logout");
+					$(self.location).attr("href","/purchase/listPurchase") ;
+				}); 
+			 });						
 	
 
+		
 		
 	</script>  

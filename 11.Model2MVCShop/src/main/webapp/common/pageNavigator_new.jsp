@@ -12,7 +12,7 @@
 		    
 		    <!--  <<== ÁÂÃø nav -->
 		  	<c:if test="${ resultPage.currentPage <= resultPage.pageUnit }">
-		 		<li class="disabled">
+		 		<li >
 			</c:if>
 			<c:if test="${ resultPage.currentPage > resultPage.pageUnit }">
 				<li>
@@ -39,24 +39,24 @@
 				</c:if>
 			</c:forEach>
 		    
-		     <!--  ¿ìÃø nav==>> -->
 		     <c:if test="${ resultPage.endUnitPage >= resultPage.maxPage }">
 		  		<li class="disabled">
 			</c:if>
 			<c:if test="${ resultPage.endUnitPage < resultPage.maxPage }">
 				<li>
-			</c:if>
-		      <a href="javascript:fncGetList('${resultPage.endUnitPage+1}')" aria-label="Next">
+			 <a href="javascript:fncGetList('${resultPage.endUnitPage+1}')" aria-label="Next">
 		        <span aria-hidden="true">&raquo;</span>
 		      </a>
 		    </li>
+			</c:if>
+		     
 		  </ul>
 		</nav>
 		
 </div>
  
 
-
+<!--  
 <div class="container">
 		<nav>
 		  <ul class="pager">
@@ -71,8 +71,9 @@
 		<nav>
 		  <ul class="pager">
 		    <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
-		    <!-- <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>  -->
-		    <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+ 		    <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
 		  </ul>
 		</nav>
 </div>
+
+ -->

@@ -74,6 +74,8 @@ function fncUpdateProduct(){
 		alert("가격은 반드시 입력하셔야 합니다.");
 		return;
 	}
+	
+	
 	$("form").attr("method" , "POST").attr("action" , "/product/updateProduct").submit() ;
 	
 	 
@@ -105,6 +107,7 @@ $(function() {
 
 <body bgcolor="#ffffff" text="#000000">
 	<jsp:include page="/layout/toolbar.jsp" />
+	<jsp:include page="/common/Q&A.jsp" />
 	
 	
 	
