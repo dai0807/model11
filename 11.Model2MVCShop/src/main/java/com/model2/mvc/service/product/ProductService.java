@@ -1,5 +1,6 @@
 package com.model2.mvc.service.product;
 
+import java.util.List;
 import java.util.Map;
 
 import com.model2.mvc.common.Search;
@@ -18,7 +19,9 @@ public interface ProductService {
 
 	//리스트 가져오기
 	public  Map<String, Object> getProductList(Search search)  throws Exception;
-	
+
+	public  List<Product>getnewProductList (int  num) throws Exception  ; // 리스트 가져오기 
+
 	// public int findTrandtranNo(int prodNo )  throws Exception; 이건 아직 
 
 	//트랜코드 찾기 

@@ -62,6 +62,15 @@ public class ProductServiceImpl implements ProductService{
 	 
 		}
 
+ 		public List<Product>getnewProductList(int num) throws Exception {
+	 		List<Product> list = productDao.getnewProductList(num) ;
+ 
+
+ 			return 	list;
+		}	
+	 	
+	 	
+	 	
  	 	public int findTrandtranNo(int prodNo) throws Exception {
 			// TODO Auto-generated method stub
 			return productDao.findTrandtranNo(prodNo);
@@ -72,5 +81,7 @@ public class ProductServiceImpl implements ProductService{
 			  productDao.minusQuantity(product);
 			
 		}
+
+
 
 	}

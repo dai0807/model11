@@ -80,7 +80,7 @@
 	
 	 
 	 <!-- SQL :: select List  -->
-	 <!--  
+	   
 	 <select id ="getProductList" parameterType="search"	resultMap="productSelectMap" >
 	  	SELECT *
 		  	FROM (	SELECT inner_table.* , ROWNUM AS row_seq
@@ -107,36 +107,19 @@
 		 	
 	 
 	 </select>
-	--> 
+ 
 	
 	
 	
-		 <select id ="getProductList" parameterType="search"	resultMap="productSelectMap" >
-	  	SELECT *
-		  	FROM (	SELECT inner_table.* , ROWNUM AS row_seq
-		  					FROM		(	SELECT p.*  
-												FROM product p  
- 													<where>
- 													<if test="searchCondition != null">
-																<if test="searchCondition == 0 and searchKeyword !='' ">
-														 			AND p.prod_no LIKE  LIKE '%' || #{searchKeyword} || '%'
-																</if>
-																<if test="searchCondition == 1 and searchKeyword !='' ">
-														 			AND 	p.prod_name LIKE '%' || #{searchKeyword} || '%'
-																</if>
-																 <if test="searchCondition == 2 and searchKeyword !='' ">
-														 				AND p.price = #{searchKeyword}
-																</if>
-													 </if>
-															
-													</where>
-												ORDER BY p.prod_no ) inner_table
-							WHERE ROWNUM &lt;= #{endRowNum} )
-			WHERE row_seq BETWEEN #{startRowNum} AND #{endRowNum} 
+		 <select id ="getnewProductList"  parameterType="int"	resultMap="productSelectMap" >
+	    select inner.*   from (
+			select prod_no , prod_name ,price , image_file,quantity, reg_date 
+			From product  order by  reg_date DESC) inner WHERE ROWNUM  &lt;= #{value}
 		 	
 	 
 	 </select>
 	
+	 
 		 <select  id="getTotalCount"  parameterType="search"	 resultType="int">
 	  	SELECT COUNT(*)
 	  	FROM(	SELECT  p.*  
@@ -156,9 +139,7 @@
 								</if>
 							</where>
 						 ) countTable						
-	 </select>
-	
-	
+	 </select>	
 	 	<!--  USER 아직 안바꿈 SQL : SELECT ROW Count -->	 
 	 	<!--  프로덕트 수량 전  
 	 <select  id="getTotalCount"  parameterType="search"	 resultType="int">

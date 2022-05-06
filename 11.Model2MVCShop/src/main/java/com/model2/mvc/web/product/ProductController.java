@@ -1,6 +1,7 @@
 package com.model2.mvc.web.product;
 
 import java.io.File;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -152,6 +153,20 @@ public class ProductController {
 		return "redirect:/product/addProductView.jsp";
 	}
 	
+	
+	@RequestMapping( value="MainView" , method=RequestMethod.GET )
+	public String MainView( Model model ) throws Exception {
+
+		System.out.println("/MainView  로 보내기 ");
+		int num =6;
+		 List<Product>list=productService.getnewProductList(num);
+		 System.out.println(list);
+		model.addAttribute("list", list);
+
+		
+		
+		return "forward:/main.jsp";
+	}
 	
 	
     

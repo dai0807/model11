@@ -26,20 +26,49 @@
     <!-- Bootstrap Dropdown Hover JS -->
    <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
 	
-	<!--  CSS 추가 : 툴바에 화면 가리는 현상 해결 :  주석처리 전, 후 확인-->
+	
+	  <!-- jQuery UI toolTip 사용 CSS-->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <!-- jQuery UI toolTip 사용 JS-->
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Song+Myung&family=Source+Serif+Pro:wght@600&display=swap" rel="stylesheet">
+	
+	
+
+     <!--  ///////////////////////// JavaScript ////////////////////////// -->
+	<script type="text/javascript">
+	
+	$("a:contains('보기')").on("click" , function(){
+		
+		
+		var pageNAME =  '/product/getProduct' ;
+		 console.log(  pageNAME );
+
+		var jprodNo = $(this).attr("value") ;
+		 console.log( "prodNo " +jprodNo );
+
+		 
+			  
+        self.location = pageNAME + "?prodNo="+jprodNo+"&menu=search"   ; 
+			
+	});
+
+	
+	</script> 	
+
 	<style>
         body {
             padding-top : 10px;
         }
+               h2 {font-family: 'Black Han Sans', sans-serif;}
         
         
     
         
    	</style>
-   	
-     <!--  ///////////////////////// JavaScript ////////////////////////// -->
-	 	
-	
+   	<title>Fait Main</title>
 </head>
 	
 <body>
@@ -122,17 +151,40 @@
 
 	<!-- 참조 : http://getbootstrap.com/css/   : container part..... -->
 	<div class="container">
-        <h3> 너의 할일을 해 </h3>
-        <p>" 너의 할일을 해 ."</p>
-  	 	<h3>" 너의 할일을 해 ."</h3>
-         <h3> 너의 할일을 해 </h3>
-         <p>. 너의 할일을 해 .</p>
+	<h2> 최신 상품 </h2>
+			<div> 
+				
+				 <c:forEach var="product" items="${list}">
+			 
+			
+			 	<div class="col-sm-4 col-md-4 " >
+			      <div class="thumbnail"  style="height: 400px;"   >
+			       <img class="img-responsive" src="/images/uploadFiles/${product.fileName }"  onerror="this.onerror=null; this.src='https://via.placeholder.com/240X200?text=No Image';" style= "width:200; height:200px;" > 
+			     
+			      
+			     
+			          <div class="caption">
+			            <h3> ${ product.prodName } </h3>
+			            <p>가격  :${product.price}</p>
+			            <p>수량  :${product.quantity}</p>
+			            
+			            <p > <a href="/product/getProduct?prodNo=${product.prodNo}&menu=search" class="btn btn-info" role="button" value ="${product.prodNo}">보기</a>
+			      		 
+			        </div>
+			      </div>
+			    </div> 
+			
+			
+				</c:forEach>	
+			
+			</div>
+
  
   	 </div>
-
+<br/><br/>
 </body>
 
-
+	
 
 
 

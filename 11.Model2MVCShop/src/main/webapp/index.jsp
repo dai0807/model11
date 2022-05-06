@@ -7,9 +7,16 @@
 
 <!-- ///////////////////////////// 로그인시 Forward  /////////////////////////////////////// -->
  <c:if test="${ ! empty user }">
- 	<jsp:forward page="main.jsp"/>
+ 
+ <script type="text/javascript">
+ 
+ self.location = "/product/MainView" ;
+ 
+ </script>
+ 
  </c:if>
  <!-- //////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
 
 
 <!DOCTYPE html>

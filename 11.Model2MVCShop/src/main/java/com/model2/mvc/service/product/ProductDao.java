@@ -10,9 +10,10 @@ import com.model2.mvc.service.domain.Product;
 public interface ProductDao {
 
 	public   Product getProduct(int prodNo) throws Exception 	 ; // 제품 찾기
+ 	public  List<Product>getProductList (Search search) throws Exception  ; // 리스트 가져오기 
 	
-	public  List<Product>getProductList (Search search) throws Exception  ; // 리스트 가져오기 
-	
+	public  List<Product>getnewProductList (int  num) throws Exception  ; // 리스트 가져오기 
+
 	public void insertProduct(Product product) throws Exception  ; // 제품 넣기
 	
 	public void updateProduct(Product product) throws Exception  ;  // 제품 업뎃!

@@ -38,6 +38,11 @@ public class ProductDaoImpl implements ProductDao{
 		// TODO Auto-generated method stub
 	 return sqlSession.selectList("ProductMapper.getProductList", search);
 	}
+	public List<Product> getnewProductList(int num) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("ProductMapper.getnewProductList", num);
+	}
+	
 
  	public void insertProduct(Product product) throws Exception {
  		sqlSession.insert("ProductMapper.addProduct" , product) ;
@@ -65,7 +70,8 @@ public class ProductDaoImpl implements ProductDao{
 		  sqlSession.update("ProductMapper.minusQuantity", product);
 		
 	}
-	
+
+ 
 	
 	
 
