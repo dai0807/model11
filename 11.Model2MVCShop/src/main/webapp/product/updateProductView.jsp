@@ -148,7 +148,7 @@ $(function() {
 			<div class="form-group">
 	   		 <label for="inputPassword" class="col-sm-offset-1 col-sm-3 control-label"> АЁАн   </label>
 		 	   <div class="col-sm-4">
-		      <input type="text" class="form-control" id="price" name="price">
+		      <input type="text" class="form-control" id="price" name="price"    value= "${Product.price}">
 	    		</div>
 	    	
 	    	

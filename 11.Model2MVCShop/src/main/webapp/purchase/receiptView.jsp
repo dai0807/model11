@@ -113,10 +113,7 @@ $(function() {
 	  		 <tr>
 		      <th scope="row">硅价锐噶老 </th>
 		      <td>  ${purchase.dlvyDate} </td>
-		    </tr>	  		 <tr>
-		      <th scope="row"> 林巩老  </th>
-		      <td>  ${purchase.orderDate}   </td>
-		    </tr>
+		    </tr>	  		 
 
 
 	 </tbody>
