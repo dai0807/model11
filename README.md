@@ -5,25 +5,26 @@
 개발기간 : 2022 / 04   ~ 2022 / 05  (한달동안 11번의 리팩토링 과정을 거침)
 
 # 개발환경
-*Git & Github
-*Front-End: HTML, CSS, JavaScript, JSP, JQuery, AJAX, JSON, BootStrap
-*Back-End : JAVA, Spring, MyBatis, tomacat, Oracle
-*Tool Eclipse
+* Git & Github
+* Front-End: HTML, CSS, JavaScript, JSP, JQuery, AJAX, JSON, BootStrap
+* Back-End : JAVA, Spring, MyBatis, tomacat, Oracle
+* Tool Eclipse
 
-#구현기능
+# 구현기능
 
-###회원 관리
+### 회원 관리
+
 * 회원가입 / 로그인 / 로그아웃
 * 회원 정보 조회 및 수정
 
-###상품관리
+### 상품관리
 * 상품 등록 / 수정 / 조회
 * 상품 리스트 조회
 
-###구매관리
-*상품 구매
-*배송 관리
-*구매 및 판매 리스트 
+### 구매관리
+* 상품 구매
+* 배송 관리
+* 구매 및 판매 리스트 
 
 ## 화면 구성
 
